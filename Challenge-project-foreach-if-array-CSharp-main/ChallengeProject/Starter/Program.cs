@@ -19,7 +19,6 @@ This C# console application is designed to:
     Logan:          91.2    A-
 */
 int examAssignments = 5;
-
 string[] studentNames = new string[] { "Sophia", "Andrew", "Emma", "Logan" };
 
 int[] sophiaScores = new int[] { 90, 86, 87, 98, 100, 94, 90 };
@@ -29,11 +28,13 @@ int[] loganScores = new int[] { 90, 95, 87, 88, 96, 96 };
 
 int[] studentScores = new int[10];
 
+
+
 string currentStudentLetterGrade = "";
 
 // display the header row for scores/grades
 Console.Clear();
-Console.WriteLine("Student\t\tGrade\tLetter Grade\n");
+Console.WriteLine("Student\t\tExam Score\tOverall Grade\t\tExtra Credit\n");
 
 /*
 The outer foreach loop is used to:
@@ -61,10 +62,23 @@ foreach (string name in studentNames)
 
     int sumAssignmentScores = 0;
 
+    decimal currentStudentExamScore = 0;
+
+    decimal currentStudentExtraCredit = 0;
+
     decimal currentStudentOverallGrade = 0;
+
+    decimal currentStudentExtraCreditPoints = 0;
 
     int gradedAssignments = 0;
 
+    for (int i = 0; i < studentScores.Length; i++)
+    {
+        if(studentScores[i] > 5)
+        {
+            Console.WriteLine(studentScores[i]);
+        }
+    }
     /* 
     the inner foreach loop sums assignment scores
     extra credit assignments are worth 10% of an exam score
@@ -125,7 +139,7 @@ foreach (string name in studentNames)
     // Sophia:         92.2    A-
     
     //Console.WriteLine($"{currentStudent}\t\t{currentStudentOverallGrade}\t{currentStudentLetterGrade}");
-    Console.WriteLine($"{currentStudent}\t\t{currentStudentExamScore}\t\t{currentStudentOverallGrade}\t{currentStudentLetterGrade}\t\t{currentStudentExtraCredit}");
+    Console.WriteLine($"{currentStudent}\t\t{currentStudentExamScore}\t\t{currentStudentOverallGrade}\t{currentStudentLetterGrade}\t\t{currentStudentExtraCredit} ({currentStudentExtraCreditPoints} pts)");
 }
 
 // required for running in VS Code (keeps the Output windows open to view results)
